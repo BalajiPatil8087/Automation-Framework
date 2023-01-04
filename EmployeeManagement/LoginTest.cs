@@ -17,7 +17,28 @@ namespace EmployeeManagement
             driver.FindElement(By.Name("password")).SendKeys("admin123");
             driver.FindElement(By.XPath("//button[@type='submit']")).Click();
 
+            string actualurl=driver.Url;
+            Assert.That(actualurl, Is.EqualTo("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"));
             
         }
+
+
+        [Test]
+        [TestCase("John", "John123", "Invalid credentials")]
+        [TestCase("peter", "peter123", "Invalid credentials")]
+        public void InValidLoginTest(String username, string password, string exceptedError)
+        {
+            driver.FindElement(By.Name("username")).SendKeys(username);
+            driver.FindElement(By.Name("password")).SendKeys(password);
+            driver.FindElement(By.XPath("//button[@type='submit']")).Click();
+
+            string errmsg = driver.FindElement(By.XPath("//p[normalize-space()='Invalid credentials']")).Text;
+            Console.WriteLine(errmsg.ToUpper());
+
+            Assert.That(errmsg.Contains(exceptedError), "Assertion on error msg");
+
+
+        }
+
     }
 }
