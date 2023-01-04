@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement.Base;
+using EmployeeManagement.Utilities;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -21,34 +22,9 @@ namespace EmployeeManagement
             Assert.That(actualurl, Is.EqualTo("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"));
             
         }
-          public static object[] InValidLogin()
-        {
-
-            string[] dataset1 = new string[3];
-            dataset1[0] = "John";
-            dataset1[1] = "John123";
-            dataset1[2] = "Invalid credentials";
-
-            string[] dataset2 = new string[3];
-            dataset2[0] = "peter";
-            dataset2[1] = "peter123";
-            dataset2[2] = "Invalid credentials";
-
-            string[] dataset3 = new string[3];
-            dataset3[0] = "saul";
-            dataset3[1] = "saul123";
-            dataset3[2] = "Invalid credentials";
-
-            object[] alldataset = new object[3];//no of testcase
-
-            alldataset[0] = dataset1;
-            alldataset[1] = dataset2;
-            alldataset[2] = dataset3;
-
-            return alldataset;
-        }
+         
        
-        [Test,TestCaseSource(nameof(InValidLogin))]
+        [Test,TestCaseSource(typeof(DataSource),nameof(DataSource.InValidLogin))]
        
 
         //[Test]
