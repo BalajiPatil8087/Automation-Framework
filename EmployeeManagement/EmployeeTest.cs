@@ -60,15 +60,19 @@ namespace EmployeeManagement
 
             driver.FindElement(By.XPath("//button[normalize-space()=\"Add\"]")).Click();
 
-
+           
             driver.FindElement(By.Name("firstName")).SendKeys(firstName);
             driver.FindElement(By.Name("middleName")).SendKeys(middleName);
             driver.FindElement(By.Name("lastName")).SendKeys(lastName);
 
             driver.FindElement(By.XPath("//button[normalize-space()='Save']")).Click();
 
-            string actualtext = driver.FindElement(By.CssSelector("[class='oxd-text oxd-text--h6 --strong']")).Text;
-            actualtext.ToString();
+
+            string headerLocatorXpath = "//h6[contains(normalize-space(),'@@@@@')]";
+            headerLocatorXpath = headerLocatorXpath.Replace("@@@@@",firstName);
+
+
+            string actualtext = driver.FindElement(By.XPath(headerLocatorXpath)).Text;
             Assert.That(employeename.Contains(actualtext), "Assert on error msg");
         }
 
