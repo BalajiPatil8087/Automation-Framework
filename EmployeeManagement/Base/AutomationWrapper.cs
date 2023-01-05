@@ -17,7 +17,7 @@ namespace EmployeeManagement.Base
 
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(50);
 
             driver.Url = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
         }
