@@ -49,7 +49,7 @@ namespace EmployeeManagement.Utilities
 
 
             string[] dataset2 = new string[6];
-            
+
             dataset2[0] = "Admin";
             dataset2[1] = "admin123";
             dataset2[2] = "saul";
@@ -57,14 +57,30 @@ namespace EmployeeManagement.Utilities
             dataset2[4] = "goodman";
             dataset2[5] = "saul goodman";
 
-          
+
             object[] alldataset = new object[2];//no of testcase
 
             alldataset[0] = dataset1;
             alldataset[1] = dataset2;
-         
+
 
             return alldataset;
+        }
+
+        public static object[] InvalidLoginData2()
+        {
+            object[] data = ExcelUtils.GetSheetIntoObjectArray
+                 (@"C:\Users\patilbs\Desktop\C#\Automationframework\EmployeeManagement\TestData\orange_data.xlsx"
+                    , "InvalidLoginTest");
+            return data;
+        }
+
+        public static object[] AddValidEmployeeData2()
+        {
+            object[] data = ExcelUtils.GetSheetIntoObjectArray
+                 (@"C:\Users\patilbs\Desktop\C#\Automationframework\EmployeeManagement\TestData\orange_data.xlsx"
+                    ,"AddValidEmployeeTest");
+            return data;
         }
     }
 }

@@ -24,13 +24,10 @@ namespace EmployeeManagement
         }
          
        
-        [Test,TestCaseSource(typeof(DataSource),nameof(DataSource.InValidLogin))]
+        [Test,TestCaseSource(typeof(DataSource),nameof(DataSource.InvalidLoginData2))]
        
 
-        //[Test]
-        // [TestCase("John", "John123", "Invalid credentials")]
-        //[TestCase("peter", "peter123", "Invalid credentials")]
-        //[TestCase("saul", "saul123", "Invalid credentials")]
+        
         public void InValidLoginTest(String username, string password, string exceptedError)
         {
             driver.FindElement(By.Name("username")).SendKeys(username);
